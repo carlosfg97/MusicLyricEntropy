@@ -30,13 +30,14 @@ library(ggpubr)
 
 The next few chunks are meant to be run if the user has created its own CSV
 and wishes to go through the preprocessing step by step.
-If one uses to run the program with a dataframe that has been already preprocessed,
-please jump to part 2. FEATURE ENGINEERING
+If one wishes to run the program with a dataframe that has been already preprocessed,
+please jump to part **2. FEATURE ENGINEERING**
 
 
 ```{r message=FALSE}
 
 df=read.csv('16k_songs_and_lyrics.csv')
+
 
 nrow(df)
 
@@ -144,6 +145,9 @@ saveRDS(df_merged, '16k_sngs_lyr_art_gnr.rds')
 
 
 # 2. FEATURE ENGINEERING
+* Run since this step to load an already preprocessed dataframe and skip 20 minutes of preprocessing
+* Feature engineering includes creation of ratio features like words-per-minutes, words-per-unique, etc.
+* Also the formatting of a decade column
 
 ```{r message=FALSE}
 
@@ -184,13 +188,10 @@ attach(df)
 
 
 
-## 3. VISUALIZATIONS
+# 3. VISUALIZATIONS
+## 3.1. UNIVARIATE VISUALIZATIONS
 
 ```{r}
-
-df
-
-
 
 df=  df[df$duration_minutes < 15, ]
 df=  df[df$words_per_minute < 250, ]
@@ -201,8 +202,6 @@ attach(df_popular)
 
 dim(df_popular)
 
-
-# 3.1. Univariate Descriptions
 ggplot(df) + 
   geom_density( aes(x = log(n_words), color = 'no. of words (log)'), adjust=5, size=0.8) + 
   geom_density( aes(x = log(n_unique), color = 'no. of unique (log)'), adjust=5 , size=0.8) +
@@ -211,7 +210,10 @@ ggplot(df) +
   xlab('Variables') + 
   ylab('Density')  + theme_fivethirtyeight()
 
+```
 
+
+```{r}
 ggplot(df) + 
   geom_density( aes(x = log(words_per_minute) , color = 'words-per-minute (log)'), adjust=5, size = 0.8) +
   geom_density( aes(x = log(unique_per_minute), color = 'unique-per-minute (log)'), adjust=5, size=0.8) + 
@@ -219,8 +221,11 @@ ggplot(df) +
   labs(title = 'Distribution of unique-per-minute and words-per-minute (smoothed)') + 
   xlab('Variables') + 
   ylab('Density')  + theme_fivethirtyeight()
-  
 
+```
+
+
+```{r}
 ggplot(df) + 
   geom_density( aes(x = log(duration_minutes) , color = 'duration in minutes (log)'), adjust=5, size = 0.8) +
   geom_density( aes(x = log(words_per_unique), color = 'words-per-unique (log)'), adjust=5, size=0.8) + 
@@ -228,8 +233,11 @@ ggplot(df) +
   labs(title = 'Distribution of duration (minutes) and words-per-minute (smoothed)') + 
   xlab('Variables') + 
   ylab('Density')  + theme_fivethirtyeight()
+```
 
 
+
+```{r}
 
 df %>% 
   ggplot(aes(x = decade)) +
@@ -239,15 +247,26 @@ df %>%
   ylab('Frequency')  +theme_fivethirtyeight()
 
 
+```
+
+
+```{r}
+ 
 df %>% 
   ggplot(aes(x = main_genre)) +
   geom_histogram(stat='count', fill='blue4') +
   labs(title='Histogram of songs in dataset by genre') + 
   xlab('Decades') + 
   ylab('Frequency')  +theme_fivethirtyeight()
+```
 
 
-# 3.2. Multivariate Vis
+## 3.2. MULTIVARIATE VISUALIZATIONS
+
+
+```{r}
+
+
 
 df=  df[df$duration_minutes < 15, ]
 df=  df[df$words_per_minute < 250, ]
