@@ -1,11 +1,16 @@
 
-# Music Lyrics Entropy/Diversity Analysis
+---
+title: Music Lyrics Entropy/Diversity Analysis (Supervised & Unsup.)
+output: html_document
+---
+
+
 * Univariate/Multivariate Plotting
 * Tree Based Song Popularity Predictor
 * Artist-level PCA analysis for tips to commercial success
 
 
-```{r}
+```{r message=FALSE}
 
 #install.packages('tm')
 #install.packages('textclean')
@@ -20,14 +25,20 @@ library(ggthemes)
 library(ggpubr)
 ```
 
+# 1. CSV READ AND LYRICS PREPROCESSING
+* Simple pipeline with traditional NLP preprocessing. 
+
+The next few chunks are meant to be run if the user has created its own CSV
+and wishes to go through the preprocessing step by step.
+If one uses to run the program with a dataframe that has been already preprocessed,
+please jump to part 2. FEATURE ENGINEERING
+
+
+```{r message=FALSE}
+
 df=read.csv('16k_songs_and_lyrics.csv')
 
 nrow(df)
-
-
-## 1. NLP PREPROCESSING LYRICS
-#simple pipeline with traditional NLP preprocessing. 
-#each LoC does an operation that is vital in the process of making the lyrics quantifiable
 
 df = df %>% 
   rowwise( ) %>% 
@@ -74,9 +85,6 @@ genres_freq %>%
   arrange(desc(Freq)) %>% 
   top_n(10)
 
-df_artists$artist_genres_list[10]
-
-
 genre_standard = function(v)
 {
   ifelse(v %in% c('rock', 'classicrock', 'albumrock', 'modenrock'),
@@ -97,15 +105,8 @@ genre_standard = function(v)
 }
 
 
-df_artists$artist_genres_list[10]
-
-
 df_artists = df_artists %>% 
   mutate(genre_standarized = lapply(artist_genres_list, genre_standard) )
-
-df_artists$genre_standarized[14]
-df_artists$genre_standarized[11]
-
 
 df_artists = df_artists %>% 
   rowwise() %>% 
@@ -139,18 +140,18 @@ dim(df_merged)
 
 saveRDS(df_merged, '16k_sngs_lyr_art_gnr.rds')
 
+```
+
+
+# 2. FEATURE ENGINEERING
+
+```{r message=FALSE}
 
 # |v|v|v| start from here to skip  |v|v|v|
 # |v|v|v| 20 mins of preprocessing |v|v|v|
 df <- readRDS('16k_sngs_lyr_art_gnr.rds')
 
-df$main_genre
-names(df)
 
-dim(df)
-df$main_genre
-
-## 2. FEATURE ENGINEERING
 
 df = df %>% 
   rowwise() %>% 
@@ -177,9 +178,15 @@ table(decade)
 
 attach(df)
 
+```
+
+
+
 
 
 ## 3. VISUALIZATIONS
+
+```{r}
 
 df
 
