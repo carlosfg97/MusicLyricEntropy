@@ -1,4 +1,9 @@
 
+# Music Lyrics Entropy/Diversity Analysis
+* Univariate/Multivariate Plotting
+* Tree Based Song Popularity Predictor
+* Artist-level PCA analysis for tips to commercial success
+
 
 ```{r}
 
@@ -13,6 +18,7 @@ require(stringr)
 require(ggplot2)
 library(ggthemes)
 library(ggpubr)
+```
 
 df=read.csv('16k_songs_and_lyrics.csv')
 
