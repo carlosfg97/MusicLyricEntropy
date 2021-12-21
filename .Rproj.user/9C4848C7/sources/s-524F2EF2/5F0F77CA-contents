@@ -530,7 +530,7 @@ mean(abs(predicted_score -track_popularity))
 ```
 
 
-What does the model predict for...
+#### What does the model predict for...
 
 ... Wonderful Tonight: a 1970s ballad
 ```{r,  error=FALSE,  warning=FALSE, message=FALSE}
@@ -563,11 +563,6 @@ print(predicted_score_altered)
 
 ```
 
-Interesting: the first one has its predicted score more affected if we simulate it 
-as a 2020s song, while Karma Chameleon seems to be a tune that still adapts to today's 
-listeners.
-
-
 
 
 ## 4.2. PCA analysis at an Artist-Level
@@ -597,17 +592,20 @@ print(pca)
 ```
 
 
+We plot the first 2 PC and observe how very popular artists distribute in this map.
 
-
-
-
-
+```{r}
 #install.packages(“ggfortify")
 library(ggfortify)
 
 
 autoplot(pca, data = df_artists_pca[,c(2:10)], loadings = TRUE, loadings.label = TRUE,
          col=ifelse(df_artists_pca$track_popularity > 75,"blue","transparent"))
+```
+
+
+
+
 
 
 

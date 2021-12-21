@@ -530,15 +530,13 @@ mean(abs(predicted_score -track_popularity))
 ```
 
 
-What does the model predict for...
+#### What does the model predict for...
 
 ... Wonderful Tonight: a 1970s ballad
 ```{r,  error=FALSE,  warning=FALSE, message=FALSE}
 df_song = df_popular[df_popular$track_name == 'Wonderful Tonight' , ]
 predicted_score_original=predict(boosted, newdata=df_song, n.trees=10000)
 print(predicted_score_original)
-
-print(df_song)
 
 
 # what if we change its release to be 2020s
@@ -558,8 +556,6 @@ df_song = df_popular[df_popular$track_name == 'Karma Chameleon' , ]
 predicted_score_original=predict(boosted, newdata=df_song, n.trees=10000)
 print(predicted_score_original)
 
-View(df_song)
-
 df_song$decade = 20
 
 predicted_score_altered=predict(boosted, newdata=df_song, n.trees=10000)
@@ -567,18 +563,13 @@ print(predicted_score_altered)
 
 ```
 
-Interesting: the first one has its predicted score more affected if we simulate it 
-as a 2020s song, while Karma Chameleon seems to be a tune that still adapts to today's 
-listeners.
-
-
 
 
 ## 4.2. PCA analysis at an Artist-Level
       
       
 
-```{r,  error=FALSE,  warning=FALSE, message=FALSE}
+```{r,  error=FALSE,  warning=FALSE}
 
 
 df_artists_pca = df_popular %>% group_by(artist_name.x) %>% 
@@ -592,29 +583,29 @@ df_artists_pca = df_popular %>% group_by(artist_name.x) %>%
             words_per_unique = mean(words_per_unique),
             words_per_minute = mean(words_per_minute))
 
-print(dim(df_artists_pca)     
-)
+pca=prcomp(df_artists_pca[,c(2:10)], scale=TRUE)
 
 
+print(pca)
 
 
 ```
 
 
+We plot the first 2 PC and observe how very popular artists distribute in this map.
 
-
-
-pca=prcomp(df_artists_pca[,c(2:10)], scale=TRUE)
-
-pca
-
-
+```{r}
 #install.packages(“ggfortify")
 library(ggfortify)
 
 
 autoplot(pca, data = df_artists_pca[,c(2:10)], loadings = TRUE, loadings.label = TRUE,
          col=ifelse(df_artists_pca$track_popularity > 75,"blue","transparent"))
+```
+
+
+
+
 
 
 
