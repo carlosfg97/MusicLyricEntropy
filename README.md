@@ -10,7 +10,7 @@
 
 <img src="https://github.com/carlosfg97/MusicLyricEntropy/blob/main/img/wpu_genre_decade.png?raw=true" alt="drawing" width="500"/>
 
-2. **[Lyrics Entropy Analysis w/ R](https://carlosfg97.github.io/MusicLyricEntropy/MusicLyricsEntropy.html)**
+2. **[Lyrics Entropy Analysis w/ R](https://carlosfg97.github.io/MusicLyricEntropy/Music-Lyrics-Entropy.html)**
     * Univariate and Multivariate analysis through plotting
     * Gradient Boosted Machine using lyrics entropy as a very important feature
     * Artist-level PCA analysis to find commonalities in succesful acts
