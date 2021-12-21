@@ -1,6 +1,6 @@
 # Music Lyrics Entropy Analysis in R
 
-1. [Data Retrieval w/ Python](https://github.com/carlosfg97/MusicLyricEntropy/blob/main/Python%20-%20SpotiPy%20and%20Genius%2017K%20Songs%20and%20Lyrics%20Retrieval.ipynb
+1. [Data Retrieval w/ Python](https://github.com/carlosfg97/MusicLyricEntropy/blob/main/Python%20-%20SpotiPy%20and%20Genius%2017K%20Songs%20and%20Lyrics%20Retrieval.ipynb)
 * Scrapping Spotify's Database using Spotipy library
 * Scrapping Genius's lyrics Database using LyricsGenius library
 
