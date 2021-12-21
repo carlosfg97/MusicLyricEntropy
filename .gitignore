@@ -1,4 +1,5 @@
 .Rproj.user
+.ipynb_checkpoints/
 16k_songs_and_lyrics_proc.rds
 .Rhistory
 .RData
