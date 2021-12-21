@@ -2,6 +2,8 @@
 
 ## [PROJECT HOME PAGE](https://carlosfg97.github.io/MusicLyricEntropy/)
 
+[](https://raw.githubusercontent.com/carlosfg97/MusicLyricEntropy/main/img/fig1.jpg)
+
 1. **[Data Retrieval w/ Python](https://github.com/carlosfg97/MusicLyricEntropy/blob/main/Py%20-%20SpotiPy%20and%20Genius%2017K%20Songs%20and%20Lyrics%20Retrieval.ipynb)**
     * Scrapping Spotify's Database using Spotipy library
     * Scrapping Genius's lyrics Database using LyricsGenius library
