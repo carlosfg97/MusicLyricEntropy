@@ -137,8 +137,7 @@ df <- readRDS('16k_sngs_lyr_art_gnr.rds')
 df$main_genre
 names(df)
 
-dim(df)
-df$main_genre
+
 
 ## 2. FEATURE ENGINEERING
 
@@ -327,9 +326,9 @@ df_popular[df_popular$words_per_unique<15,] %>%
 df_popular[df_popular$decade %in% c('70' , '80', '20'), ]  %>% 
   ggplot(aes(x = words_per_unique, y = track_popularity, color=decade)) +
   geom_point( alpha = 0.05, size=0.5) +
-  geom_smooth( se = F, size=1)+ xlab('WPU') + 
+  geom_smooth( se = F, size=1)+ xlab('Words-per-unique-word') + 
   ylab('Track Popularity Score')+
-  labs(title = 'WPU~Popularity Correlation in the 70S, 80s and 2020s') +
+  labs(title = 'Words-per-Unique-word~Popularity Correlation through the decades') +
   scale_colour_brewer( palette = "Set1")
 
       
@@ -360,12 +359,6 @@ df_popular %>%
 df_popular = df_popular[!is.na(df_popular$words_per_unique),]
 
 attach(df_popular)
-
-df_popular
-
-names(df_popular)
-
-table(main_genre)
 
 
 df_popular$main_genre
@@ -417,7 +410,7 @@ plot2000s <- df_popular[(df_popular$main_genre %in% c('indie','rap', 'pop',  'ro
   labs(title = 'Songs released in the 2000s')
 
 
-plot <- ggarrange(plot80s + rremove("ylab"),
+plot <- ggarrange(plot80s,
           plot2000s + rremove("ylab"),
           ncol=2, nrow=1, common.legend = TRUE, legend="bottom")
 
