@@ -3,24 +3,24 @@
     "path": "C:/Users/carlo/OneDrive - McGill University/FALL TERM/MGSC 661 Multivariate Stats/Individual Project (Final)/MusicEntropy/REntropy.rmd",
     "project_path": "REntropy.rmd",
     "type": "r_markdown",
-    "hash": "838515047",
+    "hash": "3347016981",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1640036264098.0,
-    "source_on_save": false,
+    "source_on_save": true,
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "263,35",
-        "scrollLine": "226"
+        "cursorPosition": "576,35",
+        "scrollLine": "564"
     },
     "folds": "",
-    "lastKnownWriteTime": 1640038595,
+    "lastKnownWriteTime": 1640054712,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1640038595708,
+    "last_content_update": 1640054764340,
     "read_only": false,
     "read_only_alternatives": []
 }
