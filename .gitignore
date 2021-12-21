@@ -1,5 +1,8 @@
 .Rproj.user
+16k_songs_and_lyrics_proc.rds
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
+*.rmd
 *.csv
