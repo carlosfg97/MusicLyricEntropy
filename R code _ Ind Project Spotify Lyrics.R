@@ -417,7 +417,7 @@ plot <- ggarrange(plot80s,
 
 annotate_figure(plot, top = text_grob("Lyric Diversity by Genre and its effect in track popularity",
                                       color = 'blue4',
-                                      size = 11))
+                                      size = 14))
 
 
 # 4. MODELING
